@@ -2,4 +2,4 @@ This is a simple javascript game that challenges the user to match an exact numb
 
 The example I based this off of was "Crystal Collectors" where users would click on pictures of crystals. I instead decided to use album covers from the artist Oneohtrix Point Never since they seem kind of weird and esoteric. To encourage the user to keep playing, I tried to add some flavor to the object of the game by rewarding a win with a revelation of a "secret of the universe". These secrets are just some phrases in an array that randomly generate but it's funny (at least it's funny to me).
 
-If you'd like to learn how to code a project like this or have some interesting additions or changes to the code as it is now, feel free to reach out to me at coleman.richardm@gmail.com and I'd love to hear your feedback.
+This is a good exercise for anyone looking for a simple JS game to build. If you'd like to learn how to make this or have some interesting additions or changes to the code as it is now, feel free to reach out to me at coleman.richardm@gmail.com and I'd love to hear your feedback.
