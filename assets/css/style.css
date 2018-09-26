@@ -4,7 +4,8 @@ body{
 }
 
 #crystals {
-margin: 0 auto;}
+margin: 0 35px;
+}
 .crystal-image {
     width: 300px;
     height: 300px;
