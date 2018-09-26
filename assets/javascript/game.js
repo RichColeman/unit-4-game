@@ -1,3 +1,13 @@
+var secrets = [
+  "You don't actually need to fill your car with gas. What you think is gasoline is actually just water.",
+  "You're actually living in a scripted TV show and all of your friends and family are actors.",
+  "Ghostbusters 2 is better than Ghostbusters.",
+  "Pickles have feelings.",
+  "The food items in your fridge chat with eachother when the door is closed and none of them enjoy talking to the condiments.",
+  "Antartica is not a real place.",
+  "Since 1989, every home has come with a robotic servant living in the walls. You can activate this servant by pressing up against the most western wall in your home and shouting the words, 'I love you, robots' three times."
+];
+
 // ------ Getting our Random Number for players to guess ----- //
 
 // targetNumber function finds a value between min and max and returns it. Nice!
@@ -10,10 +20,6 @@ var randomNumber = targetNumber(19, 120);
 
 // dollar-holler calls the h1 tag and inserts our random number. Holla!
 $("#number-to-guess").text(randomNumber);
-
-
-
-
 
 // --------- Displaying Our Crystals and Assigning Random Values ------ //
 
@@ -28,29 +34,28 @@ var crystalPhotos = [
 ];
 
 // Next we create a for loop to create 4 crystals. Preach!
-function randomizeCrystals(){
-for (var i = 0; i < crystalPhotos.length; i++) {
-  // For each iteration, we will create an imageCrystal. Don't fix what ain't broke!
-  var imageCrystal = $("<img>");
+function randomizeCrystals() {
+  for (var i = 0; i < crystalPhotos.length; i++) {
+    // For each iteration, we will create an imageCrystal. Don't fix what ain't broke!
+    var imageCrystal = $("<img>");
 
-  // First each crystal will be given the class ".crystal-image".
-  // This will allow the CSS to take effect. YES! YES! YES!
-  imageCrystal.addClass("crystal-image");
+    // First each crystal will be given the class ".crystal-image".
+    // This will allow the CSS to take effect. YES! YES! YES!
+    imageCrystal.addClass("crystal-image");
 
-  // Each imageCrystal will be given a src link to the crystal image. VITAL!
-  imageCrystal.attr("src", crystalPhotos[i]);
+    // Each imageCrystal will be given a src link to the crystal image. VITAL!
+    imageCrystal.attr("src", crystalPhotos[i]);
 
-  // Each imageCrystal will be given a data attribute called data-crystalValue.
-  // This data attribute will be set to a random number using our targetNumber function -- how sweet it is!
-  imageCrystal.attr("data-crystalvalue", targetNumber(1,12));
+    // Each imageCrystal will be given a data attribute called data-crystalValue.
+    // This data attribute will be set to a random number using our targetNumber function -- how sweet it is!
+    imageCrystal.attr("data-crystalvalue", targetNumber(1, 12));
 
-  // Lastly, each crystal image (with all it classes and attributes) will get added to the page. They out there!
-  $("#crystals").append(imageCrystal);
-}
+    // Lastly, each crystal image (with all it classes and attributes) will get added to the page. They out there!
+    $("#crystals").append(imageCrystal);
+  }
 }
 
 randomizeCrystals();
-
 
 // ------ Defining a user guess ------ //
 
@@ -67,24 +72,26 @@ $(".crystal-image").on("click", function() {
   $("#user-score").text(counter);
 
   if (counter === randomNumber) {
-    alert("You win!");
+    $("h2").text("You WIN!!");
+    $("#reset").html("<button id='reset-button'> PLAY AGAIN! </button>");
+    $("#secret").html(
+      "<p> Here's a secret: " + secrets[targetNumber(0, 6)] + "</p>"
+    );
   } else if (counter >= randomNumber) {
     $("h2").text("You lose!!");
-    $("#reset").html("<button id='reset-button'> TRY AGAIN! </button>")
+    $("#reset").html("<button id='reset-button'> TRY AGAIN! </button>");
+    $(".crystal-image").on("click", function() {
+      $(".crystal-image").attr("data-crystalvalue", 0);
+    });
   }
 });
-
 // --------- Reset the game ------ //
 
-function reset(){
-  counter = 0;
-  randomNumber = targetNumber(19,120);
-  randomizeCrystals();
-  $("#number-to-guess").text(randomNumber);
-  $("h2").text("this works");
-  $("#reset").empty();
-};
-
-$("#reset-button").on("click", function() {
-  reset();
+$("#reset").on("click", function() {
+  location.reload();
 });
+
+
+function imageZero(){
+
+}
