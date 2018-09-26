@@ -1,3 +1,5 @@
+// Let's first create an array of "secrets of the universe" that the user will get to read when they solve the puzzle. Let's put it first so we can easily add more phrases if inspiration strikes in the future!
+
 var secrets = [
   "You don't actually need to fill your car with gas. What you think is gasoline is actually just water.",
   "You're actually living in a scripted TV show and all of your friends and family are actors.",
@@ -18,7 +20,7 @@ function targetNumber(min, max) {
 //randomNumber variable holds a random number between 19 and 120. Heck yeah it does!
 var randomNumber = targetNumber(19, 120);
 
-// dollar-holler calls the h1 tag and inserts our random number. Holla!
+// calls the number to guess span and inserts our random number. Holla!
 $("#number-to-guess").text(randomNumber);
 
 // --------- Displaying Our Crystals and Assigning Random Values ------ //
@@ -67,31 +69,30 @@ $(".crystal-image").on("click", function() {
   var crystalValue = $(this).attr("data-crystalvalue");
   crystalValue = parseInt(crystalValue);
   counter += crystalValue;
-
-  // In this game we call life, you either win or lose. Same goes for this game. Here are the rules for that game
   $("#user-score").text(counter);
 
+  // In this game we call life, you either win or lose. Same goes for this game. Here are the rules for winning and losing based on our counter
   if (counter === randomNumber) {
     $("h2").text("You WIN!!");
+    $("h3").empty();
     $("#reset").html("<button id='reset-button'> PLAY AGAIN! </button>");
     $("#secret").html(
       "<p> Here's a secret: " + secrets[targetNumber(0, 6)] + "</p>"
     );
+    imageCrystal.attr("data-crystalvalue", 0);
+
   } else if (counter >= randomNumber) {
-    $("h2").text("You lose!!");
-    $("#reset").html("<button id='reset-button'> TRY AGAIN! </button>");
+    $("h2").text("You lose! You know nothing of value!");
+    $("#reset").html("<button id='reset-button'> PLAY AGAIN! </button>");
     $(".crystal-image").on("click", function() {
       $(".crystal-image").attr("data-crystalvalue", 0);
     });
   }
 });
+
 // --------- Reset the game ------ //
 
+// gotta reset the game on that sweet, sweet button click
 $("#reset").on("click", function() {
   location.reload();
 });
-
-
-function imageZero(){
-
-}

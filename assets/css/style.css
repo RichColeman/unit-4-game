@@ -1,8 +1,11 @@
 body{
-    background: grey;
+    background: rgb(54, 50, 50);
+    margin: 0 auto;
 }
 
-
+#crystals {
+    margin-left: 3%;
+}
 .crystal-image {
     width: 300px;
     height: 300px;
@@ -53,4 +56,9 @@ margin-right:15%;
     text-decoration: none;
     font-size: 32px;
     size: 4em;
+}
+
+#secret{
+    margin-left: 15%;
+    margin-right:15%;
 }
