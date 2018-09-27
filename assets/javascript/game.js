@@ -11,6 +11,7 @@ var secrets = [
   "Validation triggers are your friend."
 ];
 
+// Let's define a variable that will act as our validation trigger. This is going to prevent the user from getting additional secrets.
 var hasSecret = false;
 
 
