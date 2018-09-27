@@ -7,8 +7,12 @@ var secrets = [
   "Pickles have feelings.",
   "The food items in your fridge chat with eachother when the door is closed and none of them enjoy talking to the condiments.",
   "Antartica is not a real place.",
-  "Since 1989, every home has come with a robotic servant living in the walls. You can activate this servant by pressing up against the most western wall in your home and shouting the words, 'I love you, robots' three times."
+  "Since 1989, every home has come with a robotic servant living in the walls. You can activate this servant by pressing up against the most western wall in your home and shouting the words, 'I love you, robots' three times.",
+  "Validation triggers are your friend."
 ];
+
+var hasSecret = false;
+
 
 // ------ Getting our Random Number for players to guess ----- //
 
@@ -76,17 +80,18 @@ $(".crystal-image").on("click", function() {
     $("h2").text("You WIN!!");
     $("h3").empty();
     $("#reset").html("<button id='reset-button'> PLAY AGAIN! </button>");
-    $("#secret").html(
-      "<p> Here's a secret: " + secrets[targetNumber(0, 6)] + "</p>"
+    if (hasSecret === false){$("#secret").html(
+      "<p> Here's a secret: " + secrets[targetNumber(0, 7)] + "</p>"
     );
-    imageCrystal.attr("data-crystalvalue", 0);
+    hasSecret = true;
+  };
+    $(".crystal-image").attr("data-crystalvalue", "0");    
 
   } else if (counter >= randomNumber) {
     $("h2").text("You lose! You know nothing of value!");
     $("#reset").html("<button id='reset-button'> PLAY AGAIN! </button>");
-    $(".crystal-image").on("click", function() {
-      $(".crystal-image").attr("data-crystalvalue", 0);
-    });
+    $(".crystal-image").attr("data-crystalvalue", "0");
+
   }
 });
 
